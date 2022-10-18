@@ -7,14 +7,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#',
-        black: '#2B3140',
-        700: '#4F586E',
-        500: '#6E7A96',
-        300: '#99A2B8',
-        100: '#D1D7E5',
-        50: '#EDEEF8',
-        white: '#FFFFFF',
+        primary: '#3156C6',
+        neutral: {
+          black: '#2B3140',
+          700: '#4F586E',
+          500: '#6E7A96',
+          300: '#99A2B8',
+          100: '#D1D7E5',
+          50: '#EDEEF8',
+          white: '#FFFFFF',
+        },
 
         bug: '#5BC468',
         dragon: '#FF5775',
