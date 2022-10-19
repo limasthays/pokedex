@@ -1,23 +1,18 @@
+import { dehydrate, QueryClient, useQuery } from 'react-query'
 import { FilterButton } from './FilterButton'
+import { nanoid } from 'nanoid'
+
+const getPokemonTypes = async () =>
+  await (await fetch('http://pokedex.jhonnymichel.com/type')).json()
 
 export const Filter = () => {
+  const { data, isLoading, isError } = useQuery('poketypes', getPokemonTypes)
+
   return (
-    <div
-      className="
-    overflow-auto
-    p-3
-     
-    flex
-    gap-2"
-    >
-      <FilterButton title="bug" />
-      <FilterButton title="dragon" />
-      <FilterButton title="fairy" />
-      <FilterButton title="fire" />
-      <FilterButton title="ghost" />
-      <FilterButton title="ground" />
-      <FilterButton title="normal" />
-      <FilterButton title="psychic" />
+    <div className="overflow-auto flex gap-2">
+      {data?.results.map((type) => {
+        return <FilterButton key={nanoid()} title={type.name} />
+      })}
     </div>
   )
 }
