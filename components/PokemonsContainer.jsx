@@ -1,18 +1,32 @@
 import { PokemonCard } from './PokemonCard'
 import { nanoid } from 'nanoid'
+import { useContext } from 'react'
+import { PokemonsContext } from '../contexts/pokemonsContext'
 
-export const PokemonsContainer = ({ data }) => {
-  return (
-    <div className="flex flex-wrap gap-4">
-      {data?.results.map((pokemon) => (
-        <PokemonCard
-          key={nanoid()}
-          number={pokemon.id}
-          name={pokemon.name}
-          types={pokemon.type}
-          picture={pokemon.picture}
-        />
-      ))}
-    </div>
-  )
+export const PokemonsContainer = () => {
+  const { data, isLoading } = useContext(PokemonsContext)
+
+  const pokemonsList = data?.results
+
+  if (isLoading) {
+    return (
+      <div>
+        <p>loading...</p>
+      </div>
+    )
+  } else {
+    return (
+      <div className="flex flex-wrap gap-4">
+        {pokemonsList.map((pokemon) => (
+          <PokemonCard
+            key={nanoid()}
+            number={pokemon.id}
+            name={pokemon.name}
+            types={pokemon.type}
+            picture={pokemon.picture}
+          />
+        ))}
+      </div>
+    )
+  }
 }
