@@ -1,5 +1,5 @@
 import { dehydrate, QueryClient, useQuery } from 'react-query'
-import { FilterButton } from './FilterButton'
+import { FilterButton, FilterButtonAll } from './FilterButton'
 import { nanoid } from 'nanoid'
 
 const getPokemonTypes = async () =>
@@ -10,8 +10,13 @@ export const Filter = () => {
 
   return (
     <div className="overflow-auto flex gap-2">
+      <FilterButtonAll>all</FilterButtonAll>
       {data?.results.map((type) => {
-        return <FilterButton key={nanoid()} title={type.name} />
+        return (
+          <FilterButton key={nanoid()} value={type.name}>
+            {type.name}
+          </FilterButton>
+        )
       })}
     </div>
   )

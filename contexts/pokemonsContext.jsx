@@ -6,17 +6,17 @@ export const PokemonsContext = createContext({})
 export const PokemonsProvider = ({ children }) => {
   const [offset, setOffset] = useState(0)
   const [limit, setLimit] = useState(12)
-  const [aux, setAux] = useState(0)
+  const [filterType, setFilterType] = useState('')
 
   const getPokemons = async () =>
     await (
       await fetch(
-        `http://pokedex.jhonnymichel.com/pokemon/?offset=${offset}&limit=${limit}`
+        `http://pokedex.jhonnymichel.com/pokemon/?offset=${offset}&limit=${limit}&type=${filterType}`
       )
     ).json()
 
-  const { data, isLoading, isError } = useQuery(
-    ['pokemons', offset, limit],
+  const { data, isLoading, error, isError } = useQuery(
+    ['pokemons', offset, limit, filterType],
     getPokemons
   )
 
@@ -30,8 +30,8 @@ export const PokemonsProvider = ({ children }) => {
         setLimit,
         offset,
         setOffset,
-        aux,
-        setAux,
+        filterType,
+        setFilterType,
       }}
     >
       {children}

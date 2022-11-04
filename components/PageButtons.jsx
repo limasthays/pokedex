@@ -6,17 +6,17 @@ import arrowBack from '../public/icons/arrow-back.svg'
 import arrowForward from '../public/icons/arrow-forward.svg'
 
 export const PageButtons = () => {
-  const { setOffset, offset, limit } = useContext(PokemonsContext)
-
-  const nextPage = () => {
-    console.log('next page')
-    setOffset(offset + limit)
-  }
+  const { setOffset, offset, limit, data } = useContext(PokemonsContext)
 
   const backPage = () => {
-    console.log('back page')
     if (offset > 0) {
       setOffset(offset - limit)
+    }
+  }
+
+  const nextPage = () => {
+    if (offset < data.count && limit < data.count) {
+      setOffset(offset + limit)
     }
   }
 

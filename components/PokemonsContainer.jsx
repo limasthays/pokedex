@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { PokemonsContext } from '../contexts/pokemonsContext'
 
 export const PokemonsContainer = () => {
-  const { data, isLoading } = useContext(PokemonsContext)
+  const { data, isLoading, error } = useContext(PokemonsContext)
 
   const pokemonsList = data?.results
 
@@ -12,6 +12,12 @@ export const PokemonsContainer = () => {
     return (
       <div>
         <p>loading...</p>
+      </div>
+    )
+  } else if (error) {
+    return (
+      <div>
+        <p>{error}</p>
       </div>
     )
   } else {
