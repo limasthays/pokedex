@@ -34,8 +34,10 @@ export const PokemonCard = ({ number, name, types, picture }) => {
   return (
     <div
       key={nanoid()}
-      className={`grow 
-      w-2/5 sm:w-1/4 lg:w-custom 
+      className={` 
+      flex flex-col
+      justify-between
+      w-2/5 sm:w-1/4 lg:w-custom
       rounded-lg border 
       bg-gradient-to-br 
       ${cardClasses(types[0])}
@@ -51,11 +53,11 @@ export const PokemonCard = ({ number, name, types, picture }) => {
         </div>
 
         <div className="self-center">
-          <Image src={picture} alt={`${name} image`} width={104} height={104} />
+          <Image src={picture} alt={`${name} image`} width={160} height={160} />
         </div>
         <BodyFont03>{name}</BodyFont03>
       </div>
-      <div className="bg-white rounded-b-lg p-2">
+      <div className="bg-white rounded-b-lg p-1.5">
         {types?.map((type) => (
           <TypeButton key={nanoid()} type={type}>
             {type}

@@ -26,10 +26,10 @@ export const TypeButton = ({ children, type }) => {
 
   return (
     <span
-      className={`border rounded p-1
-    ${borderClasses(type)}
-    font-bold text-subtitle
-    text-neutral-black mr-2`}
+      className={`border rounded p-0.5
+      ${borderClasses(type)}
+      font-bold text-subtitle
+     text-neutral-black mr-2`}
     >
       {children}
     </span>

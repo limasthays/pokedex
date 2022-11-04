@@ -22,7 +22,11 @@ export const PokemonsContainer = () => {
     )
   } else {
     return (
-      <div className="flex flex-wrap gap-4">
+      <div
+        className="flex flex-wrap 
+      justify-center lg:justify-between 
+      gap-6"
+      >
         {pokemonsList.map((pokemon) => (
           <PokemonCard
             key={nanoid()}
