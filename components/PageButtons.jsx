@@ -6,25 +6,28 @@ import arrowBack from '../public/icons/arrow-back.svg'
 import arrowForward from '../public/icons/arrow-forward.svg'
 
 export const PageButtons = () => {
-  const {
-    paginationValue,
-    setPaginationValue,
-    page,
-    setPage,
-    aux,
-    setAux,
-    data,
-  } = useContext(PokemonsContext)
+  const { setOffset, offset, limit } = useContext(PokemonsContext)
 
   const nextPage = () => {
-    setAux(++aux)
-    setPage(aux * paginationValue)
-    console.log(aux, page, paginationValue)
+    console.log('next page')
+    setOffset(offset + limit)
+  }
+
+  const backPage = () => {
+    console.log('back page')
+    if (offset > 0) {
+      setOffset(offset - limit)
+    }
   }
 
   return (
     <div>
-      <button>
+      <button
+        onClick={() => {
+          backPage()
+        }}
+        disabled={offset === 0 ? true : false}
+      >
         <Image src={arrowBack} alt="pagination button forward" />
       </button>
 

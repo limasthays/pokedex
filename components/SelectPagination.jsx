@@ -2,15 +2,14 @@ import { useContext } from 'react'
 import { PokemonsContext } from '../contexts/pokemonsContext'
 
 export const SelectPagination = () => {
-  const { setPaginationValue, page, paginationValue } =
-    useContext(PokemonsContext)
+  const { setLimit } = useContext(PokemonsContext)
 
   return (
     <select
       name="pagination"
       className="w-max"
       onChange={(event) => {
-        setPaginationValue(parseInt(event.target.value))
+        setLimit(parseInt(event.target.value))
       }}
     >
       <option value="12">12</option>

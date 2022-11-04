@@ -4,19 +4,19 @@ import { useQuery } from 'react-query'
 export const PokemonsContext = createContext({})
 
 export const PokemonsProvider = ({ children }) => {
-  const [page, setPage] = useState(0)
-  const [paginationValue, setPaginationValue] = useState(12)
+  const [offset, setOffset] = useState(0)
+  const [limit, setLimit] = useState(12)
   const [aux, setAux] = useState(0)
 
   const getPokemons = async () =>
     await (
       await fetch(
-        `http://pokedex.jhonnymichel.com/pokemon/?offset=${page}&limit=${paginationValue}`
+        `http://pokedex.jhonnymichel.com/pokemon/?offset=${offset}&limit=${limit}`
       )
     ).json()
 
   const { data, isLoading, isError } = useQuery(
-    ['pokemons', page, paginationValue, aux],
+    ['pokemons', offset, limit],
     getPokemons
   )
 
@@ -26,10 +26,10 @@ export const PokemonsProvider = ({ children }) => {
         data,
         isLoading,
         isError,
-        paginationValue,
-        setPaginationValue,
-        page,
-        setPage,
+        limit,
+        setLimit,
+        offset,
+        setOffset,
         aux,
         setAux,
       }}
