@@ -2,6 +2,7 @@ import { PokemonCard } from './PokemonCard'
 import { nanoid } from 'nanoid'
 import { useContext } from 'react'
 import { PokemonsContext } from '../contexts/pokemonsContext'
+import Image from 'next/image'
 
 export const PokemonsContainer = () => {
   const { data, isLoading, error } = useContext(PokemonsContext)
@@ -20,6 +21,20 @@ export const PokemonsContainer = () => {
         <p>{error}</p>
       </div>
     )
+  } else if (pokemonsList.length === 0) {
+    return (
+      <>
+        <div style={{ width: '50%', height: '250px', position: 'relative' }}>
+          <p>no more results :(</p>
+          <Image
+            src="https://media.tenor.com/lmA7VALYIAsAAAAC/sad-pikachu.gif"
+            alt="sad pikachu with no results :("
+            layout="fill"
+            objectFit="none"
+          />
+        </div>
+      </>
+    )
   } else {
     return (
       <div
@@ -27,7 +42,7 @@ export const PokemonsContainer = () => {
       justify-center lg:justify-between 
       gap-6"
       >
-        {pokemonsList.map((pokemon) => (
+        {pokemonsList?.map((pokemon) => (
           <PokemonCard
             key={nanoid()}
             number={pokemon.id}

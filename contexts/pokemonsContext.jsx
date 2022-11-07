@@ -7,16 +7,26 @@ export const PokemonsProvider = ({ children }) => {
   const [offset, setOffset] = useState(0)
   const [limit, setLimit] = useState(12)
   const [filterType, setFilterType] = useState('')
+  const [searchName, setSearchName] = useState('')
 
-  const getPokemons = async () =>
-    await (
-      await fetch(
-        `http://pokedex.jhonnymichel.com/pokemon/?offset=${offset}&limit=${limit}&type=${filterType}`
-      )
-    ).json()
+  const getPokemons = async () => {
+    if (searchName !== '') {
+      return await (
+        await fetch(
+          `http://pokedex.jhonnymichel.com/pokemon/?search=${searchName}&limit=${limit}`
+        )
+      ).json()
+    } else {
+      return await (
+        await fetch(
+          `http://pokedex.jhonnymichel.com/pokemon/?offset=${offset}&limit=${limit}&type=${filterType}`
+        )
+      ).json()
+    }
+  }
 
   const { data, isLoading, error, isError } = useQuery(
-    ['pokemons', offset, limit, filterType],
+    ['pokemons', offset, limit, filterType, searchName],
     getPokemons
   )
 
@@ -25,6 +35,7 @@ export const PokemonsProvider = ({ children }) => {
       value={{
         data,
         isLoading,
+        error,
         isError,
         limit,
         setLimit,
@@ -32,6 +43,8 @@ export const PokemonsProvider = ({ children }) => {
         setOffset,
         filterType,
         setFilterType,
+        searchName,
+        setSearchName,
       }}
     >
       {children}
