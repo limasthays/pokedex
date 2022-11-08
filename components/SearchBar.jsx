@@ -19,11 +19,12 @@ export const SearchBar = () => {
   }
 
   return (
-    <div className="flex justify-between rounded-lg border-neutral-100 border-2 p-3.5">
+    <div className="flex justify-between rounded-lg border-neutral-100 border p-3.5 md:w-4/12">
       <input
         type="search"
         onChange={(event) => handleSearchName(event)}
-        className="placeholder:text-neutral-500 placeholder:text-sm"
+        className="placeholder:text-neutral-500 placeholder:text-sm w-full
+          focus:outline-none focus:ring focus:ring-neutral-100"
         placeholder="Search..."
       />
 

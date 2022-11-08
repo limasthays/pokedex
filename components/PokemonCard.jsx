@@ -37,7 +37,7 @@ export const PokemonCard = ({ number, name, types, picture }) => {
       className={` 
       flex flex-col
       justify-between
-      w-2/5 sm:w-1/4 lg:w-custom
+      max-w-[45%] sm:w-[30%] lg:w-custom
       rounded-lg border 
       bg-gradient-to-br 
       ${cardClasses(types[0])}

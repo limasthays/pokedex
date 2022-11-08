@@ -40,7 +40,7 @@ export const PokemonsContainer = () => {
       <div
         className="flex flex-wrap 
       justify-center lg:justify-between 
-      gap-6"
+      gap-4"
       >
         {pokemonsList?.map((pokemon) => (
           <PokemonCard
