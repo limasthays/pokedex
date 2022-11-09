@@ -23,3 +23,19 @@ export default function Home() {
     </>
   )
 }
+
+export async function getStaticProps() {
+  const getPokemonTypes = async () =>
+    await (await fetch('http://pokedex.jhonnymichel.com/type')).json()
+
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery('poketypes', getPokemonTypes)
+
+  return {
+    props: {
+      dehydratedState: {
+        types: dehydrate(queryClient),
+      },
+    },
+  }
+}

@@ -1,4 +1,4 @@
-import { dehydrate, QueryClient, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 import { FilterButton, FilterButtonAll } from './FilterButton'
 import { nanoid } from 'nanoid'
 
