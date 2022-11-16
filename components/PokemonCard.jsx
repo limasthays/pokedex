@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Subtitle01 } from './Subtitle01'
 import plus from '../public/icons/plus.svg'
 import favorite from '../public/icons/favorite.svg'
-import { BodyFont03 } from './BodyFont03'
+import { PokemonTitle } from './PokemonTitle'
 import { TypeButton } from './TypeButton'
 import { nanoid } from 'nanoid'
 import classNames from 'classnames'
@@ -55,7 +55,7 @@ export const PokemonCard = ({ number, name, types, picture }) => {
         <div className="self-center">
           <Image src={picture} alt={`${name} image`} width={160} height={160} />
         </div>
-        <BodyFont03>{name}</BodyFont03>
+        <PokemonTitle>{name}</PokemonTitle>
       </div>
       <div className="bg-white rounded-b-lg p-1.5">
         {types?.map((type) => (

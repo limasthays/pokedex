@@ -3,6 +3,7 @@ import { PokemonsContext } from '../contexts/pokemonsContext'
 
 export const FilterButton = ({ children, value }) => {
   const { setOffset, setLimit, setFilterType } = useContext(PokemonsContext)
+  const itemsPerPage = 12
   return (
     <button
       className="
@@ -18,7 +19,7 @@ export const FilterButton = ({ children, value }) => {
       onClick={(event) => {
         setFilterType(event.target.value)
         setOffset(0)
-        setLimit(12)
+        setLimit(itemsPerPage)
       }}
     >
       {children}
