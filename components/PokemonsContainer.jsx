@@ -15,13 +15,17 @@ export const PokemonsContainer = () => {
         <p>loading...</p>
       </div>
     )
-  } else if (error) {
+  }
+
+  if (error) {
     return (
       <div>
         <p>{error}</p>
       </div>
     )
-  } else if (pokemonsList.length === 0) {
+  }
+
+  if (pokemonsList.length === 0) {
     return (
       <>
         <div style={{ width: '50%', height: '250px', position: 'relative' }}>
@@ -35,23 +39,23 @@ export const PokemonsContainer = () => {
         </div>
       </>
     )
-  } else {
-    return (
-      <div
-        className="flex flex-wrap 
+  }
+
+  return (
+    <div
+      className="flex flex-wrap 
       justify-center lg:justify-between 
       gap-4"
-      >
-        {pokemonsList?.map((pokemon) => (
-          <PokemonCard
-            key={nanoid()}
-            number={pokemon.id}
-            name={pokemon.name}
-            types={pokemon.type}
-            picture={pokemon.picture}
-          />
-        ))}
-      </div>
-    )
-  }
+    >
+      {pokemonsList?.map((pokemon) => (
+        <PokemonCard
+          key={nanoid()}
+          number={pokemon.id}
+          name={pokemon.name}
+          types={pokemon.type}
+          picture={pokemon.picture}
+        />
+      ))}
+    </div>
+  )
 }
