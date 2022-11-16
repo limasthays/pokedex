@@ -26,9 +26,9 @@ export const PageButtons = () => {
         onClick={() => {
           backPage()
         }}
-        disabled={offset === 0 ? true : false}
+        disabled={offset === 0}
       >
-        <Image src={arrowBack} alt="pagination button forward" />
+        <Image src={arrowBack} alt="pagination button back" />
       </button>
 
       <button

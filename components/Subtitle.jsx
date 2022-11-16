@@ -1,4 +1,4 @@
-export const Subtitle01 = ({ children, bold }) => {
+export const Subtitle = ({ children, bold }) => {
   if (bold) {
     return (
       <span className="font-bold text-center text-subtitle text-neutral-black">
