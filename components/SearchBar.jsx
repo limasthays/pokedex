@@ -19,7 +19,7 @@ export const SearchBar = () => {
   }
 
   return (
-    <div className="flex justify-between rounded-lg border-neutral-100 border p-3.5 md:w-4/12">
+    <div className="flex justify-between rounded-lg border-neutral-100 border p-3.5 md:w-4/12 max-w-[432px]">
       <input
         type="search"
         onChange={(event) => handleSearchName(event)}
