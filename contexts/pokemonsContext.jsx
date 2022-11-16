@@ -4,8 +4,10 @@ import { useQuery } from 'react-query'
 export const PokemonsContext = createContext({})
 
 export const PokemonsProvider = ({ children }) => {
+  const itemsPerPage = 12
+
   const [offset, setOffset] = useState(0)
-  const [limit, setLimit] = useState(12)
+  const [limit, setLimit] = useState(itemsPerPage)
   const [filterType, setFilterType] = useState('')
   const [searchName, setSearchName] = useState('')
 
@@ -13,16 +15,16 @@ export const PokemonsProvider = ({ children }) => {
     if (searchName !== '') {
       return await (
         await fetch(
-          `http://pokedex.jhonnymichel.com/pokemon/?search=${searchName}&limit=${limit}`
-        )
-      ).json()
-    } else {
-      return await (
-        await fetch(
-          `http://pokedex.jhonnymichel.com/pokemon/?offset=${offset}&limit=${limit}&type=${filterType}`
+          `http://pokedex.jhonnymichel.com/pokemon/?offset=${offset}&limit=${limit}&search=${searchName}`
         )
       ).json()
     }
+
+    return await (
+      await fetch(
+        `http://pokedex.jhonnymichel.com/pokemon/?offset=${offset}&limit=${limit}&type=${filterType}`
+      )
+    ).json()
   }
 
   const { data, isLoading, error, isError } = useQuery(
