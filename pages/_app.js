@@ -17,9 +17,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient.current}>
       <PokemonsProvider>
-        <Hydrate state={pageProps.dehydratedState.types}>
+        
           <Component {...pageProps} />
-        </Hydrate>
+        
       </PokemonsProvider>
     </QueryClientProvider>
   )
