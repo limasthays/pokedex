@@ -11,7 +11,7 @@ export const Filter = () => {
   return (
     <div className="overflow-auto flex gap-2">
       <FilterButtonAll>all</FilterButtonAll>
-      {data?.results.map((type) => {
+      {data?.results?.map((type) => {
         return (
           <FilterButton key={nanoid()} value={type.name}>
             {type.name}
