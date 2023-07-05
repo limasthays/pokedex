@@ -25,10 +25,10 @@ export const PokemonsContainer = () => {
     )
   }
 
-  if (pokemonsList.length === 0) {
+  if (pokemonsList?.length === 0 && !isLoading) {
     return (
       <>
-        <div style={{ width: '50%', height: '250px', position: 'relative' }}>
+        <div className='w-1/2 h-[250px] relative'>
           <p>no more results :(</p>
           <Image
             src="https://media.tenor.com/lmA7VALYIAsAAAAC/sad-pikachu.gif"
